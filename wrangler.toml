@@ -1,7 +1,7 @@
-name = "mlbb-checker-worker"
+name = "mlbbinfo"
 account_id = "0e9d4d89e79759674c4b4bf64380fe78"
 workers_dev = true
-compatibility_date = "2025-08-08"
+compatibility_date = "2025-08-12"
 
 main = "worker.js"
 
